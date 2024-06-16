@@ -1,0 +1,898 @@
+﻿ЧТО БЫ ПРАВИЛЬНО ДАВАТЬ ОТСТУПЫ ТЕКСТУ И ЧТО БЫ ОН НЕ ОТДАЛЯЛСЯ ДРУГ ОТ ДРУГА НУЖНО ДАВАТЬ MARGIN БЛОКУ ГДЕ ОН ЛЕЖИТ
+
+.center{
+	width: 1180px;  на макете фотошоп
+	margin: 0 auto;   по центру
+}
+если цвет с макета не такой интенсивный как на самом дела то можно взять цвет с помощью гугл код у пиксель скрин и вставить свой док
+
+																			ДЛЯ СЛАЙДЕРА  картинки
+body{
+	background: url('../img/slider-bg.png') no-repeat top center;       для наушников 
+	margin: 0 auto;   по центру
+}
+.main_slider{
+	margin-top: 127px;
+}
+.main_slider .center ul{
+	height: 660px;               не забывать давать высоту блокам
+	list-style: none;
+	position: relative;
+}
+обращать внимание на макет мб много картинок которые не показаны
+.main_slider_title{     это h3
+	color: #ffffff;
+	font-family: "Open Sans";
+	font-size: 125px;
+	font-weight: 700;
+	line-height: 43.83px;
+	text-transform: uppercase;
+	margin-top: 118px;
+    position: relative; 	что бы текст вставал пиксельв пиксель на картинку
+    right: 17px;  			выравниваем 	
+} 
+ 
+																		ДЛЯ КНОПКИ BUY NOW
+																		
+<a href="#" class="main_slider_btn">Buy now<i></i></a>			 HTML															
+																		
+.main_slider_btn{
+	display: inline-block;   что бы можно было двигать, снаружи и внутри
+	position: relative;
+	color: #ffffff;
+	font-size: 15px;
+	font-weight: 700;
+	line-height: 43.83px; 	так же зависит расстояние внутри border, он дает как бы padding
+	width: 151px;         	ширина бордер ну и как бы самого блока
+	border: 2px solid #ffffff;
+	border-radius: 30px;
+	padding: 0px 18px 0 0;	расстояние внутри
+    margin: 40px 16px 0 0;   расстояние снаружи
+}
+
+.main_slider_btn i{     сам желтый кружок, мы его делаем сами
+	position: absolute;      расположение относительно нашей кнопки .main_slider_btn (тега а)
+	width: 50px;      			размеры круга
+	height: 50px;     			размеры круга
+	top: -3px;  right: -24px;		его расположение относительно макета, сначало поставили (0 и-25) потом подстраивали 
+}	
+.main_slider_btn i:after{
+	content: url('');
+	position: absolute;
+	top: 0px;  bottom: 0px;
+	left: 0px; right: 0px;
+	border-radius: 50%;  	размеры круга  делаем его круглым
+	background: url('../img/icon.png') no-repeat center #f5c617;      наша маленькая картинка тележки внутри круга цвет опять не совпал с макетом пришлось брать с помощью гугл код
+
+}
+
+.main_slider_btn i:before{
+	content: url('');
+	position: absolute;
+	top: -5px;  bottom: -5px; это выступы прозрачного кружка мы замерили что он выступает на 5px с каждой стороны
+	left: -5px; right: -5px;
+	border-radius: 50%;
+	background: rgba(245, 198, 24, 0.35);   цвет и прозрачность нашего 2 круга
+	transition: .4s;     		время анимации, скорость
+}
+
+.main_slider_btn:hover{           для бордера и текста
+	color: #f5c618;
+	border-color: #f5c618;
+}
+
+.main_slider_btn:hover i:before{  для второго прозрачного круга
+	-webkit-transform: scale(1.4);
+	transform: scale(1.4);      на сколько он растягивается
+	opacity: 0;            прозрачность, тоесть когда растянится станет невидимым
+}
+	
+														ДЛЯ СЛАЙДЕРА  КНОПОК И ЦИФР СПРАВА
+														
+<div class="main_slider_controls">     		HTML
+			<div class="main_slider_controls_count">
+				<span>02</span>/<ins>03</ins>  	цифры
+			</div>
+			<div class="main_slider_controls_pags"> 							точки
+				<span></span>
+				<span class="active"></span>
+				<span></span>
+			</div>
+			<div class="main_slider_btns">   			стрелочки
+				<button class="prev"></button>
+				<button class="next"></button>
+			</div>
+		</div>
+
+CSS
+.main_slider_controls{			выставляем цифры на место
+	position: absolute;         
+	right: 0; 	bottom: 193px;
+}
+.main_slider_controls_pags span{       черные точки
+	width: 10px;  		размер смотрим в фотошопе
+	height: 10px;
+	display: block;
+	border-radius: 50%;            круглые
+	background: #252525;			цвет
+}			
+.main_slider_btns{ 	задали высоту блока кнопок стрелочек и выровняли их потом привязали к верху
+    height: 84px;
+    margin-left: 25px;
+}
+.main_slider_btns button{         для стрелочек мы можем вырезать картинку или сделать сами, тут сами
+	width: 15px;             размеры самих палочек
+	height: 15px;
+	background: transparent;   делаем невидимые квадратики
+	border: 0px;
+	cursor: pointer;
+	vertical-align: top;       что бы кнопки были привязаны к верху, и можно было сдвинуть правую кнопку
+}
+.main_slider_btns .prev{
+	border-top: 1px solid #252525;       делаем сами палочки
+	border-left: 1px solid #252525;      
+	transform: rotate(-45deg);        потом разваричиваем ее на градусы
+}
+.main_slider_btns .next{
+	border-top: 1px solid #252525;
+	border-right: 1px solid #252525;   тут нужна палочка справа
+	transform: rotate(45deg); 
+	margin-top: 57px;                опустили правую кнопку
+}
+.main_slider_btns:after{     палочка слешер
+	content: url('');
+	position: absolute;
+	left: 0;	right: 0;
+	top: 34px;
+	width: 90px; 		длина палочки
+	height: 1px; 
+	background: #252525;
+	transform: rotate(-45deg);    разваричиваем ее
+}		
+
+чтобы кнопка BUY NOW работала нужно тегу.main_slider .center ul li.active там где лижит кнопка byu задать z-index: 1; ,a диву .main_slider_controls где лежат стрелочки и цифры слайдера задать z-index:2;
+
+																					ДЕЛАЕМ СЛАЙДЕР САМИ
+	
+.main_slider .center ul li{	
+	opacity: 0;		 делаем все картинки и слова прозрачные для начала
+		
+.main_slider .center ul li.active{  именно точка active
+	opacity: 1;                     так же дабавили в HTML первому li класс active
+}		
+		
+смысл в том, сделать так чтобы класс active перепрыгивал с одного ли на другой и обратно при нажатии на стрелочки		
+		
+		
+		
+$(function(){
+
+	$('.main_slider').eacheach(function(){                        each-будем проходится по всем нашим слайдерам(li)  .main_slider-наш селектор      
+			var $li = $('li', this);         переменная li равна  все li внутри слайдера .main_slider если пишется this,если this нет то на всей странице
+			var $prev = $('.prev', this);       prev наша кнопка button(назад)
+			var $next = $('.next', this);		next наша кнопка button(вперед)
+			var $current = $('.main_slider_controls_count span', this);   current-текущий.  это наш див с цифрами спан
+			var $count = $('.main_slider_controls_count ins', this);      count-общее количество. ins
+			var $pags = $('.main_slider_controls_pags', this)  переменная наших точек,  после удаляем все span в html у нас их 3
+
+			$li.first().addClass('active')     .first()-функция которая выбирает первый li, потом добавляем ей класс active и она становится активна см гугл код
+														вместо $li.first() можно сделать $li.eq(0)
+			$count.text($li.length);     		вставляем общее количество li в которых img
+			$current.text($li.filter('.active').index()+1);  				ищем индекс актив
+			
+			$li.each(function(){        для наших точек. То есть мы берем все li (3)  и он будет по каждому проходить и добавлять span
+				$pags.append('<span></span>');  после этого их видно в html
+		});
+		
+		var $pag = $($pags.find('span')); внутри pags ищем все span
+		$pag.eq($li.filter('.active').index()).addClass('active');
+		
+			$prev.click(function(){            .click- событие, клик мышкой, далее записываем что будет происходить
+				var index = $li.filter('.active').index(); объявляем переменную index записываем в нее наш массив Li и отфильтровываем, при помощи фильтра ищем li с классом active а мы знаем что он у первого li, и записываем его порядковый номер
+				if(index == 0){ если индекс равен 0 то мы присваеваем общее значение количество всех элементов
+					index = $li.length 		общее значение количество всех элементов у нас 3 li
+			}
+				
+				$li.eq(index-1).addClass('active').siblings().removeClass('active');       		eq-тоже самое что nth-child в css, берет отсчет с 0тоесть он равет1
+				(index-1)это то что он будет уходить на 1 назад и добавляем ему класс active. siblings() это все рядом стоящие ли и удаляем им класс active
+				$pag.eq(index-1).addClass('active').siblings().removeClass('active');
+				$current.text(index)
+				console.log(index-1) вывод в консоли гугл код console показывает как он работает как ведет себя
+		});
+			$next.click(function(){
+				var index = $li.filter('.active').index();
+				if(index == $li.length-1){
+					index = -1
+				}
+				$li.eq(index+1).addClass('active').siblings().removeClass('active');
+					$pag.eq(index+1).addClass('active').siblings().removeClass('active');
+				$current.text(index+2)
+		});
+
+
+	});
+
+});		
+
+
+после ('.next', this);	удаляем active у li		         
+.main_slider .center ul li{	 
+	opacity: 0;	
+	transition: .4s;добавляем
+}				 
+
+																			ДОБАВЛЯЕМ АНИМАЦИЮ		
+	
+<div class="wrapper">    оборачиваем всю страницу после body	
+	.wrapper{ в самое начало
+	overflow: hidden;   что бы не было полосы прокрутки которая добавилась при transform: translate(2000px);
+}
+	
+ transform смотреть описание может делать повороты наклоны и т.д	
+.main_slider_title{  нашему заголовку даем 			делаем заголовку описанию и цене с buy	 
+	    transform: translate(2000px);		Сдвигает элемент по горизонтали на указанное значение. Положительное значение сдвигает вправо, отрицательное влево.			 
+		transition: .8s;       и плавность		 
+				 
+.main_slider .center ul li.active .main_slider_title{
+	transform: translate(0);      при активном li будет вставать на место
+}				 
+АНИМАЦИЯ КАРТИНКЕ			 				 
+.main_slider .center ul li img{ 
+	transform: scale(0); размер
+}
+
+.main_slider .center ul li.active img{
+	transform: scale(1); увеличивается при активе
+	 transition: .8s;
+}				 
+				 
+				 
+																													SALE		 
+				 
+Чтобы сделать горизонтальную полосу			не беги вперед паравоза и сначало все напиши потом ставь отступы	 
+.h2:before{
+	content:'';
+	width: 56px;
+	height: 2px;
+	display: inline-block;  *
+	background: #f4c415;
+	vertical-align: top;     *
+	margin-top: 22px;
+	margin-right: 15px;
+}			 
+				 
+чтобы сдвинуть картинку за пределы div center 				 
+	.sale_block .sale_left{
+	position: relative;
+    left: -124px;
+}
+
+чтобы строка Р была на одной строке со SPAN, потому что Р начинает все с новой строки		 
+	.counter_sale_title p{
+	display: inline-block;			 
+	 
+чтобы задать двум строкам в одной строке расстояние
+	.counter_sale_title > *{
+	margin: 0 -7px 0 15px;
+}			 
+				 
+				 
+																			ДЕЛАЕМ СЧЕТЧИКИ С КРУГАМИ			 
+так и вбиваем в гугл счетчики с кругами Jquery		 
+https://www.youtube.com/watch?v=0KeTqKP5P84
+чтобы сделать border у счетчиков				 
+.clock-canvas:after{
+	content:'';
+	position: absolute;
+	top: 0;	 bottom: 0;
+	right: 0; left: 0;
+	border-radius: 50%;
+	border: 2px solid #e8e8e8;
+	z-index: -1;
+}			 
+				 
+чтобы сделать тень при навидении 				 
+.soc a:hover{
+	background: #f4c415;
+	box-shadow: 0px 5px 7px rgba(0,0,0, .23); по гориз по вертик и размытие цвета  все это смотреть в фотошопе на картинке эффекты справа и там тень
+}				 
+				 
+				 
+																										SALE_RIGHT					 
+				 
+что бы он встал справа нужно левому блоку задать float left				 
+.sale_block_right ul{  что бы карточки встали как надо
+ 	display: flex;
+ 	flex-wrap: wrap;
+}
+ul li{
+	width: 50%;        вместо джастифай даем размер
+	font-weight: 700;
+	line-height: 30px;
+	padding: 26px;      что бы не задавать по отдельности
+
+}				 
+
+При навидении в гугл на правый блок выделялся весь и прав и лев, поэтому 				 
+.sale_block_right{
+	overflow: hidden;    и прав блок становится отдельным
+}				 
+Но мы это убрали из за тени которая должна быть у li  при навидении				 
+				 
+Для появления тени при навидении и появлении блока soc				 
+так же для ул ли задась transition: .3s;
+.sale_block_right .soc a{
+	transform: scale(0);
+	transition: .3s;
+}
+
+.sale_block_right ul li:hover{
+	box-shadow: 0px 0px 40px rgba(0,0,0, .19);
+}
+
+.sale_block_right ul li:hover .soc a{
+	transform: scale(1);
+}
+				 
+У левого блока не работал Hover на маленькие значки покупку лайк и т.д
+.sale_block_left img{ большой картинке даем 
+	position: relative;
+    left: -124px;
+    z-index: 1;
+}
+И ховер стал работать при навидении на маленькую картинку пока не дать index	
+.soc{
+	z-index: 2;      теперь ховер работает при навидении на кружок
+	margin: 16px 0 0 19px;
+	text-align: center;
+}
+
+
+																																				POPULAR
+
+значки
+.tab_btns{
+	position: absolute; что бы значки встали в одну линию со словом
+	top: 3px;  right: -11px; подправляем
+}
+
+.tab_btns a{
+	display: inline-block;
+	margin-left: 21px;
+	padding: 0 17px;    с его помощью мы наростили в ширину нашу линию border-bottom 
+}
+
+.tab_btns a.active{
+	border-bottom: 5px solid #f4c415;    нижнее подчеркивание
+}
+
+Пишем Js для картинок
+
+.popular_gallery_prev span.active:after{  
+	background: transparent; 	 Устанавливает прозрачный фон.
+	border: 2px solid #f4c415;
+}
+Точки слева
+.popular_main_goods_right{
+	margin-top: 111px;
+	overflow: hidden; что бы встали на место к словам
+		padding-bottom: 20px; что бы тень от soc помещалась
+}
+ТОЧКИ у слов
+.popular_goods_char span{
+	color: #7b7b7b;
+	font-size: 15px;
+	font-weight: 700;
+	list-style: inside;   		Маркер является частью текстового блока и отображается в элементе списка.
+	position: relative;
+	display: block;
+	padding-left: 16px;
+}
+
+.popular_goods_char span:before{
+	content:'';
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	left: 0;  top: 13px;
+	background: #5b5d5d;
+	position: absolute;
+}
+Описание под картинками, расстояние было у каждого разное поэтому мы дали картинкам общую высоту
+.popular_goods_img {
+	height: 261px;
+}
+
+Пишем Js для переключения на верху маленьких картинок
+.popular_all_tabs_block ul{
+	display: flex;
+	flex-flow: wrap;
+	display: none;  скрываем блок
+}
+
+.popular_all_tabs_block ul.active{  добав актив
+	display: flex;
+	flex-flow: wrap;	
+}
+	
+return false;  что бы не поднималось вверх когда нету нормальной ссылки  В JS
+
+
+
+																														СЛАЙДЕР	
+																														
+.black_section_carousel ul{
+	position: absolute;
+	top: 0;	 bottom: 0;
+	right: 0; left: 0;
+}
+
+.black_section_carousel ul li{
+	position: absolute;
+	top: 0;	 bottom: 0;
+	right: 0; left: 0;
+}
+картинки делаются друг в друга возможно ul и li не надо
+.black_section_gallery{
+	position: absolute;
+	top: -621px;
+	bottom: 0;
+	right: 149px;
+	left: 0;
+}																														
+.black_section_gallery img{
+	position: absolute;
+	top: 0;	 bottom: 0;
+	right: 0; left: 0;
+	margin: auto;
+		transform: scale(0);  в конце делаем что бы все картинки исчезли
+}
+
+.black_section_gallery img.active{   а при актив наши картинки будут появляться
+	transform: scale(1);
+	transition: .3s;
+}
+Для маленьких картинок
+.black_section_gallery_prev{
+	position: absolute;
+	top: -621px;
+	bottom: 0;
+	right: 0;
+}
+
+.black_section_gallery_prev span{
+	display: block;      не забывать
+	width: 70px;
+	height: 70px;
+	background: #fff;
+	text-align: center;
+}
+ Потом удаляем актив у спан в HTML
+НИже если не хотим что бы картинка дергалась смещалась когда она актив
+.black_section_gallery_prev{
+/*	position: absolute;*/
+	top: -436px;
+	bottom: 0;
+	right: 27px;
+	cursor: pointer;
+}
+.black_section_gallery_prev img{
+		position: absolute;
+		top: 0;	 bottom: 0;
+		right: 0; left: 0;
+		margin: auto;
+}
+.black_section_gallery_prev span{
+	position: relative;
+	display: block;
+	width: 70px;
+	height: 70px;
+	background: #fff;
+	padding: 6px 0 0 8px;
+	margin-bottom: 30px;
+}
+
+																									BLACK SLIDER
+
+
+.black_section_carousel button{
+	width: 72px;
+	height: 72px;         размеры
+	border-radius: 50%;
+	background: #fff;
+	position: absolute;
+	left: 151px;   			расположение
+	border: none;			что бы не было обводки вокруг кнопки круга
+	box-shadow: 0 0 13px rgba(2, 2, 2, 0.2); rgba задаем в гугле посмотр код нажим на цвет делаем 20% размыт и ENTER  потом копируем код
+		      у верхней кнопки не было видно тени пока не дал этому диву black_section  padding-top: 136px; а у пред секции удалил padding-bottom
+	z-index: 3;
+	cursor: pointer;
+	transition: .3s;
+}
+
+.black_section_carousel button.prev{
+	top: -638px;
+}
+
+.black_section_carousel .next{
+	bottom: -36px;
+}
+
+.black_section_carousel button.prev:after{
+	content:'';
+	border-top: 1px solid #252525;
+	border-left: 1px solid #252525;     задаем размеры стрелочек
+	transform: rotate(45deg);
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	top: 15px;	 bottom: 0;
+	right: 0; left: 0;
+	margin: auto;
+	transition: .3s;
+
+}
+.black_section_carousel button.next:after{
+	content:'';
+	border-bottom: 1px solid #252525; 	изменяем направление что бы не трогать градусы
+	border-right: 1px solid #252525;		изменяем направление что бы не трогать градусы
+	transform: rotate(45deg);
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	top: 0;	 bottom: 5px;
+	right: 0; left: 0;
+	margin: auto;
+	transition: .3s;
+}
+
+.black_section_carousel button:hover{
+	background: #f5c617;        желтый круг
+}
+.black_section_carousel button:hover:after{
+	border-color: #fff;  цвет стрелок
+}
+
+.black_section_carousel button:before{
+	content: url('');
+	position: absolute;
+	top: -5px;     размеры прозрачного круга
+	bottom: -5px;
+	left: -5px;
+	right: -5px;
+	border-radius: 50%;
+	background: transparent;  что бы до навидения его небыло видно
+	transition: .5s;   обязательно а то не будет видно при навидении прозрач круг
+}
+
+.black_section_carousel button:hover:before{
+	transform: scale(1.4);  при навед он будет расшир 
+	opacity: 0;					пропадать, становится невидимым
+	background: rgba(245, 198, 24, 0.35);     его цвет оттенок
+}
+
+делаем js для слайдера
+потом
+	НЕ ЗАБЫТЬ
+.black_section_gallery{ находится в ли
+	position: absolute;
+	top: -621px;
+	bottom: 0;
+	right: 149px;
+	left: 0;
+	opacity: 0;   делаем не видимые другие картинки
+}
+
+.black_section_carousel ul li:active .black_section_gallery{
+	 opacity: 1;
+}
+
+.black_section_carousel ul li.active{
+	z-index: 1;  что бы их ничего не перекрывало
+}
+
+
+																													RIGHT BLACK
+
+																													
+Если бы было как у него																													
+.black_section_carousel{
+	width: 500px;
+	float: left;
+}
+.black_section_right{
+	overflow: hidden;
+}
+
+все остальное у меня было и я сделал по своему
+
+
+																															MULTI
+																															
+такие 3 штуки в HTML																															
+<div class="multi_block">
+			<h3><span>t</span>op review</h3>
+				<ul>
+					<li>
+						<div class="multi_img"><img src="img/222.png" alt=""></div>
+						<div class="multi_text">
+							<div class="multi_category">Headphone</div>
+							<div class="multi_title">Beat Phone VIP Chronograph Watch</div>
+							<div class="multi_price">price: <span>$450.00</span></div>
+						</div>
+					</li>
+					<li>
+						<div class="multi_img"><img src="img/222.png" alt=""></div>
+						<div class="multi_text">
+							<div class="multi_category">Headphone</div>
+							<div class="multi_title">Beat Phone VIP Chronograph Watch</div>
+							<div class="multi_price">price: <span>$450.00</span></div>
+						</div>
+					</li>
+					<li>
+						<div class="multi_img"><img src="img/222.png" alt=""></div>
+						<div class="multi_text">
+							<div class="multi_category">Headphone</div>
+							<div class="multi_title">Beat Phone VIP Chronograph Watch</div>
+							<div class="multi_price">price: <span>$450.00</span></div>
+						</div>
+					</li>
+				</ul>
+			</div>		
+			
+
+Потом задаем нашему центру где все (ul li)  flex что бы получилось 3 калонки
+.multi .center{
+	display: flex;                     
+	justify-content: space-between; 		что бы получилось 3 калонки
+}
+
+Даем фиксированную ширину  нашему блоку со всеми вложениями, justify-content: space-between;все равно работает и делает расстояние между ul-столбцами
+.multi_block{
+	width: 370px;
+}	
+
+.multi ul li{
+	box-shadow: 0 0 40px rgba(2, 2, 2, 0.19); дали тень
+	overflow: hidden; делаем текст справа
+	position: relative; для img
+	padding-left: 150px; делали после того как отцентровали картинки 
+}
+.multi_img{              тоже самое что ниже только для высоты
+	width: 150px;
+	position: absolute;
+	top: 0;	 bottom: 0;
+	left: 0;
+}
+
+.multi_img img{  у каждой картинки своя ширина поэтому мы ее центруем относительно нашего размера width: 150px;
+	position: absolute;
+	top: 0;	 bottom: 0;
+	right: 0; left: 0;
+	margin: auto;
+}
+
+.multi_text{
+	overflow: hidden;
+}
+
+
+При навидении текст поднимается вверх 
+.multi ul li:hover .multi_text .multi_category{
+	transform: translateY(-20px);
+	transition: .4s
+}
+
+.multi ul li:hover .multi_text .multi_title{
+	transform: translateY(-20px);
+	transition: .4s
+}
+
+.multi ul li:hover .multi_text .multi_price{
+	transform: translateY(-20px);
+	transition: .4s
+}
+
+.multi .soc a{
+	transform: scale(0);  делаем его размер 0 он невидим
+}
+после того как текст ушел вверх сразу появляются кнопки
+.multi ul li:hover .soc a:nth-child(1){
+	transition: .3s .1s; задержка каждой кнопки появление
+	transform: scale(1);
+}
+
+.multi ul li:hover .soc a:nth-child(2){
+	transition: .3s .2s;
+	transform: scale(1);
+}
+
+.multi ul li:hover .soc a:nth-child(3){
+	transition: .3s .3s;
+	transform: scale(1);
+}
+
+
+ЧТОБЫ МЕНЮ СТОЯЛО НА МЕСТЕ КОГДА СКРОЛИШЬ	
+
+header {
+	background: #141414;
+    padding: 16px 0 16px;
+    position: fixed;  	+
+    left: 0; right: 0; 	+
+	z-index: 98;  	   	+
+}
+Из за этого все остальное подпрыгнуло вверх на высоту меню, делаем паддинг топ на высоту меню
+
+плавный скролл к ссылке на js
+	$('header a').click(function(){
+		var link = $(this).attr('href');
+		var coordinats = $(link).offset().top;
+		$('html, body').animate({scrollTop:coordinats}, 1000);
+		return false;
+	});
+
+Если хочется чтобы скролл был именно к названию секции то надо этой секции давать padding-top, а у той что перед ней убирать padding-bottom
+
+
+
+
+																										Всплывающие окно с товаром
+
+
+добавляем в самом низу после футер
+
+.popup{
+	width: 560px;
+	height: 300px;
+	background: #fff;
+	position: fixed;
+	top: 0;	 bottom: 0;
+	right: 0; left: 0;
+	margin: auto;
+	z-index: 100;
+}
+.bg_popup{
+	background: rgba(0,0,0, 0.8);
+	position: fixed;
+	top: 0;	 bottom: 0;
+	right: 0; left: 0;
+	z-index: 99;
+}
+.popup_title{
+	color: #ffffff;
+	font-size: 23px;
+	font-weight: 700;
+	text-transform: uppercase;
+	text-align: center;
+	background: #252525;
+	padding: 13px 0;
+}
+.close{  кнопка закрыть
+	width: 22px;
+	height: 22px;
+	position: absolute;
+	right: 20px;
+	top: 19px;
+	background: url(../img/close.png) no-repeat;
+	z-index: 1;
+	cursor: pointer;
+}
+
+Кнопки
+в input мы не сможем поместить тег i для Buy now, одиночному тегу нельзя давать after и before
+<form action="">
+	<input type="text" placeholder="+7(900)500-70-70">
+	<button type="submit">Buy now</button>
+</form>
+
+все остальное было, я просто копировал
+.popup form button:hover{
+	color: #f5c618;
+	border-color: #f5c618;
+	background: transparent;  	Устанавливает прозрачный фон
+	transition: .5s;
+}
+
+
+ПОТОМ ПИШЕМ JS код
+даем им дополнительно  display: none;
+.popup{
+	display: none;
+}
+.bg_popup{
+	display: none;
+}
+ .open_popup придумали и просто добавили кому надо в class  через запятую
+	$('.open_popup').click(function(){  чтобы при клике открывалась
+		$('.popup').fadeIn();
+		$('.bg_popup').fadeIn();
+
+		$('.bg_popup, .close').click(function(){  чтобы при клике закрывалась
+			$('.popup').fadeOut();
+			$('.bg_popup').fadeOut();
+		});
+		return false
+	});
+
+
+ПОТОМ добавляем data для всех вещей которые можем купить
+
+	<a data-title="Headphone" data-category="Headphone" data-desc="оf the printing and typesetting industry" 
+					data-price="189 usd" data-img="img/slider-phone-img.png" href="#" class="main_slider_btn open_popup">Buy now<i></i></a>
+
+
+
+	$('.open_popup').click(function(){
+		$('.popup .popup_title').text($(this).data('title'));   говорим что  popup_title будет меняться на data-title который мы вставляем 
+		$('.popup .popup_vip_category').text($(this).data('category'));  в наши предметы, которые можно купить и меняем им названия
+		$('.popup .popup_desc').text($(this).data('desc')); 			 тоже самое 
+		$('.popup .popup_price span').text($(this).data('price'));	 тоже самое
+		$('.popup .popup_img img').attr('src', $(this).data('img'));  тоже самое только с картинкой и ее еще нужно подогнать по размеру
+
+		$('.popup').fadeIn();
+		$('.bg_popup').fadeIn();
+
+		$('.bg_popup, .close').click(function(){
+			$('.popup').fadeOut();
+			$('.bg_popup').fadeOut();
+		});
+		return false
+	});
+
+размер картинки подгоняем в тегах popup, так как изначально мы меняем именно их на data
+.popup_img{
+	height: 220px;
+	width: 180px;
+	position: absolute;
+	left: 0; top: 0; bottom: 0;
+} картинки макс 130px будут центроваться в области 180px 
+.popup_img img{
+	position: absolute;
+	top: 0;	 bottom: 0;
+	right: 0; left: 0;
+	margin: auto;
+	max-width: 130px;
+}
+Там где нету кнопки купить вешаем наш open_popup, пример <li class="open_popup">
+
+Потом делаем  в popup
+	<form action="">
+				<input type="hidden" name="popup_vip_title"> нивидно никому только в посмотреть код, для отправки на почту данных
+				<input type="hidden" name="popup_price">     имени цены и телефона
+				<input type="text" placeholder="+7(900)500-70-70">
+				<button type="submit">Buy now<i></i></button>
+			</form>
+
+Добавляем в JS
+		$('.popup .popup_img img').attr('src', $(this).data('img')); 
+
+		$('.popup input[name="popup_vip_title"]').val($(this).data('title'));	+ 
+		$('.popup input[name="popup_price"]').val($(this).data('price'));   		+
+
+
+		$('.popup').fadeIn();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
